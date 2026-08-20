@@ -3,7 +3,7 @@ import axios from "axios";
 
 function createApiClient({ refreshPath, storageKey,authPaths = [] }) {
   const api = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true,
   });
   // const baseURL = "http://192.168.137.1:3000"; // ← your laptop's IP from ipconfig, same port as backend
