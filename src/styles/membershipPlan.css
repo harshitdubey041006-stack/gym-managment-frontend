@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ---------- GLOBAL RESET ---------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root{
+    width: 100%;
+    min-height: 100%;
+}
+
+/* ---------- PAGE WRAPPER ---------- */
+.mp-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 20px;
+    background: linear-gradient(-45deg, #0D0D0F, #17171A, #121212, #1a1a1d);
+    background-size: 400% 400%;
+    animation: mp-gradient 15s ease infinite;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+@keyframes mp-gradient{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+
+/* ---------- CARD ---------- */
+.mp-card{
+    width: 100%;
+    max-width: 460px;
+    background: #17171A;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 40px 34px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+/* pages that hold a table (e.g. Pending Registrations) need more room */
+.mp-card:has(.mp-table){
+    max-width: 1100px;
+    width: 100%;
+    padding: 36px 34px;
+}
+
+.mp-heading{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    margin: 0 0 8px;
+    text-align: center;
+}
+
+.mp-sub{
+    color: #9A9AA2;
+    font-size: 13.5px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 0 30px;
+}
+
+.mp-card p{
+    color: #9A9AA2;
+    font-size: 13.5px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+/* ---------- LABELS ---------- */
+.mp-label{
+    display: block;
+    color: #B8B8BE;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+}
+
+/* ---------- PLAN GRID ---------- */
+.mp-plan-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.mp-plan-btn{
+    background: #1E1E22;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #D4D4D9;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 6px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mp-plan-btn:hover{
+    border-color: rgba(198,255,61,0.4);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.mp-plan-btn-active{
+    background: linear-gradient(160deg, #24290F, #1E1E22 70%);
+    border-color: #C6FF3D;
+    color: #C6FF3D;
+}
+
+/* ---------- FIELDS ---------- */
+.mp-field{
+    margin-bottom: 20px;
+}
+
+.mp-input{
+    width: 100%;
+    background: #0D0D0F;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mp-input:focus{
+    border-color: #C6FF3D;
+    box-shadow: 0 0 0 3px rgba(198,255,61,0.15);
+}
+
+.mp-input:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: #9A9AA2;
+}
+
+/* select needs a bit of extra care for the dropdown arrow area */
+select.mp-input{
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #9A9AA2 50%),
+                       linear-gradient(135deg, #9A9AA2 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+select.mp-input option{
+    background: #0D0D0F;
+    color: #fff;
+}
+
+.mp-hint{
+    color: #6C6C74;
+    font-size: 11.5px;
+    margin-top: 6px;
+}
+
+/* ---------- SUBMIT ---------- */
+.mp-submit-btn{
+    width: 100%;
+    background: #C6FF3D;
+    border: none;
+    color: #0D0D0F;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    padding: 15px 0;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: all 0.25s ease;
+}
+
+.mp-submit-btn:hover:not(:disabled){
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(198,255,61,0.3);
+}
+
+.mp-submit-btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---------- FEEDBACK ---------- */
+.mp-success-msg,
+.mp-error-msg{
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.mp-success-msg{
+    background: rgba(198,255,61,0.1);
+    border: 1px solid rgba(198,255,61,0.3);
+    color: #C6FF3D;
+}
+
+.mp-error-msg{
+    background: rgba(255,90,90,0.1);
+    border: 1px solid rgba(255,90,90,0.35);
+    color: #FF6B6B;
+}
+
+/* error paragraphs rendered inline via style={{ color: "red" }} */
+.mp-card p[style*="color: red"]{
+    color: #FF6B6B !important;
+    font-weight: 500;
+}
+
+/* ---------- QR / SCAN-TO-PAY ---------- */
+.mp-qr-link{
+    display: block;
+    width: fit-content;
+    margin: 8px auto 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mp-qr-link:active canvas{
+    transform: scale(0.97);
+}
+
+.mp-card canvas{
+    display: block;
+    border-radius: 16px;
+    padding: 14px;
+    background: #fff;
+    transition: transform 0.15s ease;
+}
+
+/* ---------- PENDING PAYMENTS: TABLE ---------- */
+.mp-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 22px;
+    font-size: 13.5px;
+}
+
+.mp-table thead th{
+    text-align: left;
+    color: #B8B8BE;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0 12px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.mp-table tbody td{
+    padding: 14px 12px;
+    color: #E4E4E9;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: middle;
+}
+
+.mp-table tbody tr:hover{
+    background: rgba(255,255,255,0.02);
+}
+
+.mp-table tbody tr:last-child td{
+    border-bottom: none;
+}
+
+.mp-table .mp-submit-btn,
+.mp-table .mp-reject-btn{
+    width: auto;
+    white-space: nowrap;
+    padding: 9px 16px;
+    font-size: 12.5px;
+    margin-top: 0;
+}
+
+.mp-reject-btn{
+    background: transparent;
+    border: 1px solid rgba(255,90,90,0.4);
+    color: #FF6B6B;
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mp-reject-btn:hover:not(:disabled){
+    background: rgba(255,90,90,0.1);
+    transform: translateY(-2px);
+}
+
+.mp-reject-btn:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---------- BACK LINK (direct child of .mp-page, not inside a card) ---------- */
+.mp-page > button{
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #B8B8BE;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mp-page > button:hover{
+    border-color: rgba(198,255,61,0.4);
+    color: #C6FF3D;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px){
+    .mp-card{
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    .mp-plan-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .mp-table{
+        font-size: 12px;
+    }
+    .mp-table thead{
+        display: none;
+    }
+    .mp-table tbody tr{
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mp-table tbody td{
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 6px 4px;
+        border-bottom: none;
+    }
+}

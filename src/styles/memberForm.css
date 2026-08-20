@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.member-form-page{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #0D0D0F, #17171A, #121212, #1a1a1d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    padding: 30px 20px;
+}
+
+@keyframes gradient{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+.member-form-card{
+    width: 100%;
+    max-width: 460px;
+    background: #17171A;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 44px 36px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: pop .5s ease;
+}
+
+@keyframes pop{
+    0%{ opacity:0; transform: scale(.95) translateY(10px); }
+    100%{ opacity:1; transform: scale(1) translateY(0); }
+}
+
+.member-form-logo{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 24px;
+}
+.member-form-logo span{ color: #C6FF3D; }
+
+.member-form-card h1{
+    text-align: center;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.member-form-subtext{
+    text-align: center;
+    color: #9A9AA2;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.member-form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.mf-input-group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mf-input-group label{
+    color: #B8B8BE;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.mf-input-group input[type="text"],
+.mf-input-group input[type="number"]{
+    background: #0D0D0F;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.mf-input-group input[type="text"]::placeholder,
+.mf-input-group input[type="number"]::placeholder{
+    color: #55555c;
+}
+
+.mf-input-group input[type="text"]:focus,
+.mf-input-group input[type="number"]:focus{
+    border-color: #C6FF3D;
+}
+
+.mf-input-group select{
+    background: #0D0D0F;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath fill='%23C6FF3D' d='M7 8L0 0h14z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    transition: border-color 0.2s ease;
+}
+
+.mf-input-group select:focus{
+    border-color: #C6FF3D;
+}
+
+.mf-input-group select option{
+    background: #17171A;
+    color: #fff;
+}
+
+.mf-file-input{
+    background: #0D0D0F;
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #9A9AA2;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.mf-file-input:hover{
+    border-color: #C6FF3D;
+}
+
+.mf-file-input::file-selector-button{
+    background: #C6FF3D;
+    border: none;
+    color: #0D0D0F;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: transform 0.2s ease;
+}
+
+.mf-file-input::file-selector-button:hover{
+    transform: translateY(-2px);
+}
+
+.mf-error{
+    background: rgba(255,80,80,0.1);
+    border: 1px solid rgba(255,80,80,0.3);
+    color: #ff8080;
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 12px;
+}
+
+.mf-btn{
+    background: #C6FF3D;
+    border: none;
+    color: #0D0D0F;
+    padding: 15px 0;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+}
+
+.mf-btn:hover:not(:disabled){
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(198,255,61,0.3);
+}
+
+.mf-btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px){
+    .member-form-card{ padding: 32px 24px; border-radius: 20px; }
+    .member-form-card h1{ font-size: 22px; }
+}

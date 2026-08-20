@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', Arial, Helvetica, sans-serif;
+    scroll-behavior:smooth;
+}
+
+.contact{
+    background: linear-gradient(-45deg, #0D0D0F, #17171A, #121212, #1a1a1d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: #fff;
+    min-height: 100vh;
+}
+
+@keyframes gradient{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 13, 15, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 8%;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-right: auto;
+}
+
+.navbar-link{
+    position: relative;
+    text-decoration: none;
+    color: #B8B8BE;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar-link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #C6FF3D;
+    transition: width .3s;
+}
+
+.navbar-link:hover{ color: #fff; }
+.navbar-link:hover::after{ width: 100%; }
+
+/* ---------- HEADING ---------- */
+.contact > h1{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    padding: 70px 8% 20px;
+    animation: pop .8s ease;
+}
+
+@keyframes pop{
+    0%{ opacity:0; transform:scale(.7); }
+    100%{ opacity:1; transform:scale(1); }
+}
+
+/* ---------- CONTACT DETAILS ---------- */
+.contact-details{
+    max-width: 600px;
+    margin: 40px auto 100px;
+    background: #17171A;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 40px;
+}
+
+.contact-details p{
+    color: #9A9AA2;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-details p:last-child{
+    border-bottom: none;
+}
+
+.contact-details strong{
+    color: #C6FF3D;
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+/* ---------- RESPONSIVE: TABLET ---------- */
+@media (max-width: 900px){
+    .contact > h1{ font-size: 2.2rem; }
+    .contact-details{ margin: 30px 6% 80px; }
+}
+
+/* ---------- RESPONSIVE: MOBILE (bottom tab bar, no JSX needed) ---------- */
+@media (max-width: 768px){
+
+    .contact{ padding-bottom: 64px; }
+
+    .navbar{
+        justify-content: space-between;
+        padding: 14px 20px;
+        gap: 0;
+    }
+
+    .navbar-link{
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        height: 60px;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 11px;
+        background: #16161a;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        z-index: 1000;
+    }
+
+    .navbar-link::before{
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    .navbar a:nth-of-type(1){ left: 0%; }
+    .navbar a:nth-of-type(1)::before{ content: "🏠"; }
+
+    .navbar a:nth-of-type(2){ left: 25%; }
+    .navbar a:nth-of-type(2)::before{ content: "ℹ️"; }
+
+    .navbar a:nth-of-type(3){ left: 50%; }
+    .navbar a:nth-of-type(3)::before{ content: "💳"; }
+
+    .navbar a:nth-of-type(4){ left: 75%; }
+    .navbar a:nth-of-type(4)::before{ content: "✉️"; }
+
+    .navbar-link::after{ display: none; }
+    .navbar-link:hover{ color: #C6FF3D; }
+
+    .contact > h1{ font-size: 1.9rem; padding: 50px 6% 10px; }
+    .contact-details{ margin: 20px 6% 60px; padding: 28px 24px; }
+    .contact-details p{ font-size: 14px; }
+}
