@@ -175,9 +175,18 @@
     box-shadow: 0 10px 25px rgba(198,255,61,0.3);
 }
 
+.plan-btn:active{
+    transform: translateY(0);
+    box-shadow: none;
+}
+
 /* ---------- RESPONSIVE: TABLET ---------- */
 @media (max-width: 900px){
     .plans > h1{ font-size: 2.2rem; }
+    .plans-container{
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+    }
     .plan-card.popular{ transform: none; }
     .plan-card.popular:hover{ transform: translateY(-8px); }
 }
@@ -185,7 +194,7 @@
 /* ---------- RESPONSIVE: MOBILE (bottom tab bar) ---------- */
 @media (max-width: 768px){
 
-    .plans{ padding-bottom: 64px; }
+    .plans{ padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
 
     .navbar{
         justify-content: space-between;
@@ -198,13 +207,14 @@
         bottom: 0;
         top: auto;
         height: 60px;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         width: 25%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4px;
-        font-size: 11px;
+        gap: 2px;
+        font-size: 10.5px;
         background: #16161a;
         border-top: 1px solid rgba(255,255,255,0.08);
         z-index: 1000;
@@ -228,8 +238,31 @@
     .navbar a:nth-of-type(4)::before{ content: "✉️"; }
 
     .navbar-link::after{ display: none; }
-    .navbar-link:hover{ color: #C6FF3D; }
+    .navbar-link:hover,
+    .navbar-link:active{ color: #C6FF3D; }
 
-    .plans > h1{ font-size: 1.9rem; padding: 50px 6% 10px; }
-    .plans-container{ padding: 30px 6% 60px; }
+    .plans > h1{ font-size: 1.7rem; padding: 40px 6% 8px; }
+
+    .plans-container{
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px 6% 20px;
+    }
+
+    .plan-card{ padding: 28px 22px; }
+    .plan-card:hover{ transform: none; }
+    .plan-card.popular:hover{ transform: none; }
+
+    .plan-card h3{ font-size: 30px; }
+
+    .plan-btn:hover{ transform: none; box-shadow: none; }
+}
+
+/* ---------- RESPONSIVE: SMALL PHONES ---------- */
+@media (max-width: 380px){
+    .plans > h1{ font-size: 1.4rem; }
+    .plan-card{ padding: 22px 16px; }
+    .plan-card h3{ font-size: 26px; }
+    .navbar-link{ font-size: 9.5px; }
+    .navbar-link::before{ font-size: 16px; }
 }

@@ -20,7 +20,6 @@ function Register() {
 
     async function handleSendOtp(e) {
         e.preventDefault();
-        console.log({ name, email, password });
         setError("");
         setMessage("");
 
@@ -34,7 +33,6 @@ function Register() {
             setMessage(result.data.message || "OTP sent to your email");
             setStep("otp");
         }catch(err){
-            console.error(err);
             setError(err.response?.data?.error || "Failed to send OTP");
         }finally{
             setLoading(false);
@@ -55,7 +53,6 @@ function Register() {
             setMessage(result.data.message || "Email verified");
             setStep("details");
         } catch (err) {
-            console.error(err);
             setError(err.response?.data?.error || "Invalid or expired OTP");
         } finally {
             setLoading(false);
@@ -77,10 +74,8 @@ function Register() {
                 password: password,
                 uniqueCode: ownerCode
             });
-            console.log("Registered:", result.data);
             navigate("/");
         } catch (err) {
-            console.error(err);
             setError(err.response?.data?.error || "Registration failed");
         } finally {
             setLoading(false);

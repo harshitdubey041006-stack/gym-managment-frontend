@@ -20,7 +20,7 @@ function FrontPage({ isUserLoggedIn }) {
     // handling plan selection 
     function handleChoosePlan(e, planName, price, durationDays){
         e.preventDefault();
-        console.log("isuserLogin", isUserLoggedIn);
+        
         navigate(isUserLoggedIn ? "/memberStatus" : "/memberLogin", {
         state: { planName, price, durationDays }
         });

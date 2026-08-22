@@ -16,7 +16,6 @@ export default function PendingPayments() {
       const res = await ownerApi.get("/membership/pending");
       setPending(res.data);
     } catch (err) {
-      console.error("Error loading pending registrations:", err.response?.data || err.message);
       setError(err.response?.data?.error || "Failed to load pending registrations");
     }
   };
@@ -33,7 +32,6 @@ export default function PendingPayments() {
       // remove it from the list instead of refetching everything
       setPending((prev) => prev.filter((p) => p.pending_id !== pendingId));
     } catch (err) {
-      console.error("Error confirming payment:", err.response?.data || err.message);
       setError(err.response?.data?.error || "Failed to confirm payment");
     } finally {
       setConfirmingId(null);
@@ -48,7 +46,6 @@ export default function PendingPayments() {
       await ownerApi.delete(`/membership/${pendingId}/reject`);
       setPending((prev) => prev.filter((p) => p.pending_id !== pendingId));
     } catch (err) {
-      console.error("Error rejecting registration:", err.response?.data || err.message);
       setError(err.response?.data?.error || "Failed to reject registration");
     } finally {
       setRejectingId(null);

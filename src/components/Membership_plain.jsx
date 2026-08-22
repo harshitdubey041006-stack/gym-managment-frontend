@@ -53,14 +53,12 @@ export default function MembershipPlanForm({ onSubmit, isOwner }) {
 
     try {
       const res = await api.post("/membershipPlan", payload);
-      console.log("Plan saved:", res.data);
       setStatus2("success");
 
       navigate("/membership", {
         state: { mobNo, mName, gender, photoUrl, status, userOrMem, planName, price, durationDays },
       });
     } catch (err) {
-      console.error("Failed to save plan:", err);
       setStatus2("error");
     }
   };

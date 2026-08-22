@@ -10,7 +10,6 @@ function memberRegistration() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [ownerCode, setOwnerCode] = useState("");
-    console.log("planName:", planName, "price:", price, "durationDays:", durationDays);
     
     const[otp,setOtp]=useState();
     const[step,setStep] = useState("email")
@@ -37,7 +36,6 @@ function memberRegistration() {
         setMessage(result.data.message || "OTP sent to your email");
         setStep("otp"); // move to OTP entry
         }catch(err){
-            console.error(err);
             setError(err.response?.data?.error || "Failed to send OTP");
         }finally{
             setLoading(false);
@@ -58,7 +56,6 @@ function memberRegistration() {
             setMessage(result.data.message || "Email verified");
             setStep("details"); // move to name/password/owner code
         } catch (err) {
-            console.error(err);
             setError(err.response?.data?.error || "Invalid or expired OTP");
         } finally {
             setLoading(false);
@@ -67,7 +64,6 @@ function memberRegistration() {
     
     async function handleRegister(e) {
         e.preventDefault(); // stops the page reload
-        console.log({ name, email, ownerCode });
         setLoading(true);
         try{
             const result = await api.post("/memberRegistration/register",{
@@ -76,10 +72,8 @@ function memberRegistration() {
             password:ownerCode,
             
             });
-            console.log("memberRegistrationed:", result.data);
             navigate("/memberLogin",{state:{planName,price,durationDays}});
         } catch (err) {
-            console.error(err);
             setError(err.response?.data?.error || "Registration failed");
         } finally {
             setLoading(false);

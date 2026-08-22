@@ -25,7 +25,6 @@ export default function Search(){
         },300);
         return () => clearTimeout(timeout);
     },[search]);
-    console.log("Members :", members);
     function handleDeleteConfirmation(mob_no, name) {
         if (window.confirm(`Are you sure you want to delete member ${name}?`)) {
             handleDeleteMember(mob_no, name);
@@ -33,7 +32,6 @@ export default function Search(){
     }
     function handleDeleteMember( mob_no, name) {
     if (!mob_no) {
-        console.error("mob_no is undefined — check the caller");
         return;
     }
     api.delete(`/members/${mob_no}`)
@@ -42,7 +40,6 @@ export default function Search(){
             alert(`Member ${name} deleted successfully.`);
         })
         .catch(err => {
-            console.error(err);
             alert(`Failed to delete member ${name}.`);
         });
     }

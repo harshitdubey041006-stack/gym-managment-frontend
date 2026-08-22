@@ -13,11 +13,9 @@ function MemberLogin({ onLogin }) {
     
     const location = useLocation();
     const{planName,price,durationDays}=location.state ?? {};
-    console.log("planName:", planName, "price:", price, "durationDays:", durationDays);
 
     async function handleSubmit(e) {
         e.preventDefault(); // stops the page reload
-        console.log({ email, password });
         setLoading(true);
         try{
             const result = await api.post("/memberRegistration/login",{
@@ -29,7 +27,6 @@ function MemberLogin({ onLogin }) {
             onLogin();
             navigate("/memberStatus",{state:{planName,price,durationDays,email:email}});
         }catch(err){
-            console.log("full error response:", err.response?.data);
             setError(err.response?.data?.message || err.response?.data?.error || "Login failed")
             
         }finally{

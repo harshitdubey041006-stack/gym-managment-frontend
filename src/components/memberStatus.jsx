@@ -14,16 +14,12 @@ export default function MemberStatus() {
      const location = useLocation(); 
 
     const{planName,price,durationDays} = location.state ?? {};
-    console.log("planName : ", planName);
-    console.log("price : ", price);
-    console.log("durationDays : ", durationDays);
 
     useEffect(() => {
     const fetchStatus = async () => {
         try {
            const result = await api.get("/me"); // matches your backend route
             setStatus(result.data);
-            console.log("membership status is : ",result.data);
             if(result.data){
                 setState("added");
             }else{
@@ -31,7 +27,6 @@ export default function MemberStatus() {
             }
         
         } catch (err) {
-            console.error(err);
             setError("Could not load your membership details");
         } finally {
             setLoading(false);

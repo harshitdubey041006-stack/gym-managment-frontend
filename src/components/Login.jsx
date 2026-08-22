@@ -12,7 +12,7 @@ function Login({ onLogin }) {
 
     async function handleSubmit(e) {
         e.preventDefault(); // stops the page reload
-        console.log({ email, password });
+        
         setLoading(true);
         try{
             const result = await api.post("/auth/login",{
@@ -24,7 +24,6 @@ function Login({ onLogin }) {
             onLogin();
             navigate("/main");
         }catch(err){
-            console.error(err);
             setError(err.response?.data?.message || "Login failed");
         }finally{
             setLoading(false);
